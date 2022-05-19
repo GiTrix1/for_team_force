@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Удалить навык</title>
+</head>
+<body bgcolor="#d3d3d3">
+    <h2>Удаление навыка</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ skill_form.as_p }}
+        <button type="submit">Удалить</button>
+    </form>
+    <p>Укажите в форме выше, какой навык удалить:</p>
+    {{ skills_user }}
+</body>
+</html>

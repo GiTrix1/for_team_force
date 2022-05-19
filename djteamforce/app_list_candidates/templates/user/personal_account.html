@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет</title>
+</head>
+<body bgcolor="#d3d3d3">
+    {% for profile in profiles %}
+        {% if user == profile.user %}
+            <p>Фамилия Имя Отчество: {{ profile.first_name }} {{ profile.middle_name }} {{ profile.last_name }}</p>
+            <p>Навыки: {{ profile.skills }}</p>
+            <p>Языки: {{ profile.language }}</p>
+            <p>Увлечения: {{ profile.hobbies }}</p>
+        {% endif %}
+    {% endfor %}
+    <a href="{% url 'add_skills' %}">+ Добавить навык</a>
+    <p><a href="{% url 'delete_skills' %}">- Удалить навык</a></p>
+    <p><a href="{% url 'main' %}">На главную страницу</a></p>
+</body>
+</html>

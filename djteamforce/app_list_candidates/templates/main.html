@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body bgcolor="#d3d3d3">
+    {% if request.user.is_authenticated %}
+        <h3 align="center">Добро пожаловать, {{ user }}!</h3>
+        <div align="center"><a href="{% url 'personal_account' %}">Личный кабинет</a></div>
+        <p><div align="center"><a href="{% url 'logout' %}">Выйти</a></div></p>
+        <h3><p>Список всех кандидатов:</p></h3>
+        -----------------------------***-----------------------------
+        {% if profiles %}
+            {% for profile in profiles %}
+                <p>ФИО: {{ profile.first_name }} {{ profile.middle_name }} {{ profile.last_name }}</p>
+                <p>Навыки: {{ profile.skills }}</p>
+                <p>Языки: {{ profile.language }}</p>
+                <p>Увлечения: {{ profile.hobbies }}</p>
+                -----------------------------***-----------------------------
+            {% endfor %}
+        {% else %}
+            Нет кандидатов
+        {% endif %}
+    {% else %}
+        <h3 align="center">Вы неавторизованны на нашем сайте!</h3>
+        <div align="center"><a href="{% url 'login' %}">Войти</a> или
+            <a href="{% url 'register' %}">Зарегистрироваться</a></div>
+    {% endif %}
+</body>
+</html>

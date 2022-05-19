@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить навык</title>
+</head>
+<body bgcolor="#d3d3d3">
+    <h2>Добавление навыка</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ skill_form.as_p }}
+        <button type="submit">Добавить</button>
+    </form>
+    <p>Список навыков которые многие указываеют:</p>
+    {% for skill in skills %}
+        {{ skill }}
+    {% endfor %}
+</body>
+</html>
